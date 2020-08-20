@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 const path = require('path');
+=======
+const path = require('path'); // module 14
+>>>>>>> master
 const express = require('express');
 const routes = require('./controllers');
 const sequelize = require('./config/connection');
@@ -10,9 +14,13 @@ const PORT = process.env.PORT || 3001;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+<<<<<<< HEAD
 app.use(express.static(path.join(__dirname, 'public')));
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
+=======
+app.use(express.static(path.join(__dirname, 'public')));  // module 14
+>>>>>>> master
 
 // turn on routes
 app.use(routes);
