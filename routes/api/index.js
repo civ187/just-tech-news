@@ -1,7 +1,7 @@
 const router = require('express').Router();
 // updated the name of the user-routes.js file from User-routes.js
-const userRoutes = require('./user-routes.js');
-const postRoutes = require('./post-routes.js');
+const userRoutes = require('./user-routes');
+const postRoutes = require('./post-routes');
 const commentRoutes = require('./comment-routes');
 
 router.use('/users', userRoutes);
