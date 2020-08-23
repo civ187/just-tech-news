@@ -33,7 +33,7 @@ router.get('/', (req, res) => {
       const posts = dbPostData.map(post => post.get({ plain: true }));
       res.render('homepage', { 
         posts,
-        loggedIn: sequelize.session.loggedIn
+        loggedIn: req.session.loggedIn
       });
     })
     .catch(err => {
