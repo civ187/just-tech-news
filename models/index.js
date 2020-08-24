@@ -10,27 +10,32 @@ User.hasMany(Post, {
 
 Post.belongsTo(User, {
     foreignKey: 'user_id',
+    onDelete: 'SET NULL'
 });
 
 User.belongsToMany(Post, {  // ============================
   through: Vote,            // With these two .belongsToMany() methods in place, we're allowing
   as: 'voted_posts',        // both the User and Post models to query each other's information in the
-  foreignKey: 'user_id'     // context of a vote
+  foreignKey: 'user_id',
+  onDelete: 'SET NULL'     // context of a vote
 });                         //  
                             // the Vote table needs a row of data to be a unique pairing so
 Post.belongsToMany(User, {  // that it knows which data to pull in when queried on. 
   through: Vote,            // So because the user_id and post_id pairings must be unique, 
   as: 'voted_posts',        // we're protected from the possibility of a single user voting 
-  foreignKey: 'post_id'     // on one post multiple times.  This layer of protection is called a foreign key constraint.
+  foreignKey: 'post_id',
+  onDelete: 'SET NULL'     // on one post multiple times.  This layer of protection is called a foreign key constraint.
 });                         //===============================
 
 // Vote associations
 Vote.belongsTo(User, {
-  foreignKey: 'user_id'
+  foreignKey: 'user_id',
+  onDelete: 'SET NULL'
 });
 
 Vote.belongsTo(Post, {
-  foreignKey: 'post_id'
+  foreignKey: 'post_id',
+  onDelete: 'SET NULL'
 });
 
 User.hasMany(Vote, {
@@ -43,15 +48,18 @@ Post.hasMany(Vote, {
 
 // Comment associations
 Comment.belongsTo(User, {
-  foreignKey: 'user_id'
+  foreignKey: 'user_id',
+  onDelete: 'SET NULL'
 });
 
 Comment.belongsTo(Post, {
-  foreignKey: 'post_id'
+  foreignKey: 'post_id',
+  onDelete: 'SET NULL'
 });
 
 User.hasMany(Comment, {
-  foreignKey: 'user_id'
+  foreignKey: 'user_id',
+  onDelete: 'SET NULL'
 });
 
 Post.hasMany(Comment, {
